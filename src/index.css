@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .grayscale {
+    filter: grayscale(100%);
+  }
+}
+
+/* Rich Text Editor Styles */
+@layer components {
+  .rich-text-content {
+    @apply max-w-none;
+  }
+  
+  .rich-text-content h1,
+  .rich-text-content h2,
+  .rich-text-content h3,
+  .rich-text-content h4,
+  .rich-text-content h5,
+  .rich-text-content h6 {
+    @apply text-white font-semibold mb-4;
+  }
+  
+  .rich-text-content h1 { @apply text-3xl; }
+  .rich-text-content h2 { @apply text-2xl; }
+  .rich-text-content h3 { @apply text-xl; }
+  .rich-text-content h4 { @apply text-lg; }
+  
+  .rich-text-content p {
+    @apply text-gray-300 mb-4 leading-relaxed;
+  }
+  
+  .rich-text-content a {
+    @apply text-blue-400 hover:text-blue-300 underline;
+  }
+  
+  .rich-text-content img {
+    @apply max-w-full h-auto rounded-lg my-4;
+  }
+  
+  .rich-text-content ul,
+  .rich-text-content ol {
+    @apply mb-4 pl-6 list-disc;
+  }
+  
+  .rich-text-content ol {
+    @apply list-decimal;
+  }
+  
+  .rich-text-content li {
+    @apply text-gray-300 mb-1;
+  }
+  
+  /* Quill specific list styles */
+  .ql-editor ul,
+  .ql-editor ol {
+    @apply mb-4 pl-6;
+  }
+  
+  .ql-editor ul {
+    @apply list-disc;
+  }
+  
+  .ql-editor ol {
+    @apply list-decimal;
+  }
+  
+  .ql-editor li {
+    @apply text-gray-300 mb-1;
+  }
+  
+  /* Enhanced list styles for blog posts */
+  .rich-text-content ul,
+  .rich-text-content ol {
+    @apply mb-4 pl-6;
+  }
+  
+  .rich-text-content ul {
+    @apply list-disc;
+  }
+  
+  .rich-text-content ol {
+    @apply list-decimal;
+  }
+  
+  .rich-text-content li {
+    @apply text-gray-300 mb-1;
+  }
+  
+  /* Ensure list markers are visible */
+  .rich-text-content ul li::marker,
+  .rich-text-content ol li::marker {
+    @apply text-gray-400;
+  }
+  
+  .ql-editor ul li::marker,
+  .ql-editor ol li::marker {
+    @apply text-gray-400;
+  }
+  
+  .rich-text-content blockquote {
+    @apply border-l-4 border-blue-500 pl-4 italic text-gray-400 my-4;
+  }
+  
+  .rich-text-content code {
+    @apply bg-white/10 px-2 py-1 rounded text-sm font-mono;
+  }
+  
+  .rich-text-content pre {
+    @apply bg-white/10 p-4 rounded-lg overflow-x-auto my-4;
+  }
+  
+  .rich-text-content pre code {
+    @apply bg-transparent p-0;
+  }
+  
+  /* ContentEditable Placeholder */
+  [contenteditable]:empty:before {
+    content: attr(data-placeholder);
+    color: #9ca3af;
+    pointer-events: none;
+  }
+  
+  /* Command and Code Block Styles */
+  .command-block,
+  .code-block,
+  .output-block {
+    @apply bg-gray-900 border border-gray-700 rounded-lg p-4 my-4 font-mono text-sm;
+  }
+  
+  .command-block {
+    @apply bg-gray-900 border-gray-700;
+  }
+  
+  .command-block pre {
+    @apply text-green-400 overflow-x-auto;
+  }
+  
+  .code-block {
+    @apply bg-gray-900 border-gray-700;
+  }
+  
+  .code-block code {
+    @apply text-gray-300;
+  }
+  
+  .output-block {
+    @apply bg-gray-800 border-gray-600;
+  }
+  
+  .output-block pre {
+    @apply text-gray-300 whitespace-pre-wrap;
+  }
+  
+  .copy-btn {
+    @apply text-blue-400 hover:text-blue-300 text-xs cursor-pointer transition-all duration-300 ease-in-out;
+  }
+  
+  .copy-btn:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+  
+  .copy-btn:hover:not(:disabled) {
+    @apply transform scale-105;
+  }
+  
+  /* Enhanced command block styling */
+  .command-block {
+    @apply relative overflow-hidden;
+  }
+  
+  .command-block::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full bg-green-500;
+  }
+  
+  /* Enhanced code block styling */
+  .code-block {
+    @apply relative;
+  }
+  
+  .code-block::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full bg-blue-500;
+  }
+  
+  /* Enhanced output block styling */
+  .output-block {
+    @apply relative;
+  }
+  
+  .output-block::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full bg-gray-500;
+  }
+  
+  .copy-btn:hover {
+    @apply text-blue-300;
+  }
+}
