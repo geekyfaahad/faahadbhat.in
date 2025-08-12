@@ -22,8 +22,32 @@ export const SEOHead = () => {
       <link rel="canonical" href="https://faahadbhat.in" />
       
       {/* Favicon */}
-      <link rel="icon" type="image/png" href="https://res.cloudinary.com/dw1sh368y/image/upload/v1749547175/faahad_atkeve.png" sizes="32x32" />
-      <link rel="icon" type="image/png" href="https://res.cloudinary.com/dw1sh368y/image/upload/v1749547175/faahad_atkeve.png" sizes="16x16" />
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+      <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link rel="manifest" href="/site.webmanifest" />
+      
+      {/* Additional Meta Tags for Better SEO */}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <meta name="application-name" content="Geeky Faahad Portfolio" />
+      <meta name="apple-mobile-web-app-title" content="Geeky Faahad" />
+      
+      {/* Language and Region */}
+      <meta httpEquiv="Content-Language" content="en" />
+      <meta name="language" content="en" />
+      <meta name="geo.region" content="IN-JK" />
+      <meta name="geo.placename" content="Kashmir, India" />
+      
+      {/* Additional Open Graph Tags */}
+      <meta property="og:image:alt" content="Portrait of Faahad Bhat - Full Stack Developer" />
+      <meta property="og:image:type" content="image/webp" />
+      <meta property="og:image:secure_url" content="https://res.cloudinary.com/dw1sh368y/image/upload/v1749547175/faahad_atkeve.webp" />
+      
+      {/* Additional Twitter Tags */}
+      <meta name="twitter:image:alt" content="Portrait of Faahad Bhat - Full Stack Developer" />
       
       {/* Open Graph Meta Tags */}
       <meta property="og:type" content="website" />
@@ -45,8 +69,13 @@ export const SEOHead = () => {
       <meta name="twitter:creator" content="@faahadbhat" />
       <meta name="twitter:site" content="@faahadbhat" />
       
+      {/* Preconnect for Performance */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link rel="preconnect" href="https://res.cloudinary.com" />
+      
       {/* Google Fonts */}
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       
       {/* Schema.org Structured Data */}
       <script type="application/ld+json">
@@ -57,7 +86,7 @@ export const SEOHead = () => {
           "alternateName": "Geeky Faahad",
           "jobTitle": "Full Stack Developer",
           "description": "A highly skilled Full-Stack Developer experienced in building performant web applications with Python (Flask, Django) and JavaScript (React). Expert in secure authentication systems, RESTful APIs, and automation.",
-          "url": "https://geekyfaahad.netlify.app/",
+          "url": "https://faahadbhat.in/",
           "image": "https://res.cloudinary.com/dw1sh368y/image/upload/v1749547175/faahad_atkeve.webp",
           "sameAs": [
             "https://twitter.com/faahadbhat",
@@ -88,26 +117,6 @@ export const SEOHead = () => {
           },
           "knowsLanguage": ["English", "Hindi", "Kashmiri"],
           "nationality": "Indian"
-        })}
-      </script>
-      
-      {/* Organization Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Geeky Faahad Portfolio",
-          "url": "https://geekyfaahad.netlify.app/",
-          "description": "Personal portfolio of Faahad Bhat, a Full Stack Developer specializing in Python and JavaScript development.",
-          "author": {
-            "@type": "Person",
-            "name": "Faahad Bhat"
-          },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://geekyfaahad.netlify.app/?search={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
         })}
       </script>
     </Helmet>

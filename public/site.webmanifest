@@ -1,0 +1,23 @@
+{
+  "name": "Geeky Faahad Portfolio - Faahad Bhat",
+  "short_name": "Geeky Faahad",
+  "description": "Personal portfolio of Faahad Bhat, a Full Stack Developer specializing in Python and JavaScript development",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0e141b",
+  "background_color": "#0e141b",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "orientation": "portrait-primary"
+}

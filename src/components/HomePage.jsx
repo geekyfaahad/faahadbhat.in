@@ -35,6 +35,42 @@ export const HomePage = () => {
             A highly skilled Full-Stack Developer experienced in building performant web applications with Python (Flask, Django) and JavaScript (React). Expert in secure authentication systems, RESTful APIs, and automation. Known for precision, team collaboration, and end-to-end execution.
           </p>
           
+          {/* Projects Section */}
+          <div className="mb-6">
+            <h2 className="text-lg font-semibold mb-3 text-white">Featured Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-md mx-auto">
+              <a
+                href="https://github.com/geekyfaahad/awaaz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg p-3 transition-all duration-200 hover:scale-105"
+              >
+                <div className="flex items-center gap-2">
+                  <GitHubIcon />
+                  <div className="text-left">
+                    <h3 className="text-sm font-medium text-white">Awaaz</h3>
+                    <p className="text-xs text-gray-400">Asynchronous News Aggregator</p>
+                  </div>
+                </div>
+              </a>
+              
+              <a
+                href="https://github.com/geekyfaahad"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg p-3 transition-all duration-200 hover:scale-105"
+              >
+                <div className="flex items-center gap-2">
+                  <GitHubIcon />
+                  <div className="text-left">
+                    <h3 className="text-sm font-medium text-white">More Projects</h3>
+                    <p className="text-xs text-gray-400">View on GitHub</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          
           <div className="flex flex-wrap justify-center gap-3 text-sm">
             <SocialLink
               href="https://twitter.com/faahadbhat"
