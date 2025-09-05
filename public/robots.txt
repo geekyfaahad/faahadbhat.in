@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /cdn-cgi/
 Disallow: /blog/admin
+
+Sitemap: https://faahadbhat.in/sitemap.xml
