@@ -17,7 +17,8 @@ export const BlogPost = () => {
       
       const button = e.target;
       const commandBlock = button.closest('.command-block');
-      const preElement = commandBlock?.querySelector('pre');
+      // Support buttons injected directly inside a <pre>
+      const preElement = commandBlock?.querySelector('pre') || button.closest('pre');
       const commandText = preElement?.textContent || button.getAttribute('data-command-text');
       
       if (!commandText) {
@@ -90,6 +91,43 @@ export const BlogPost = () => {
       }
     }
   }, []);
+
+  // Inject copy buttons into all command blocks for both old and new articles
+  useEffect(() => {
+    if (loading) return;
+    if (!post) return;
+
+    const container = document.querySelector('.rich-text-content');
+    if (!container) return;
+
+    const addButtons = () => {
+      const blocks = container.querySelectorAll('.command-block, .code-block, .output-block, pre');
+      blocks.forEach((block) => {
+        // Determine the element that will hold the button and text
+        const isPre = block.tagName && block.tagName.toLowerCase() === 'pre';
+        const host = isPre ? block : block.querySelector('pre') || block;
+        if (!host) return;
+        if (host.querySelector('.copy-btn')) return;
+
+        const commandText = host.textContent?.trim();
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'copy-btn absolute top-2 right-2 text-blue-400 hover:text-blue-300 text-xs';
+        btn.textContent = 'Copy';
+        if (commandText) btn.setAttribute('data-command-text', commandText);
+
+        // Ensure positioning so the absolute button anchors correctly
+        if (!host.style.position || host.style.position === '') {
+          host.style.position = 'relative';
+        }
+        host.appendChild(btn);
+      });
+    };
+
+    // Run after DOM updates
+    const id = requestAnimationFrame(addButtons);
+    return () => cancelAnimationFrame(id);
+  }, [post, loading]);
 
   useEffect(() => {
     const load = async () => {
