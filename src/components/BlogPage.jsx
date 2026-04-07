@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { getPublishedBlogPosts, debugGetAllPosts } from '../firebase/blogService.js';
 
 export const BlogPage = () => {
@@ -115,7 +115,7 @@ export const BlogPage = () => {
         <header className="border-b border-white/10">
           <div className="max-w-4xl mx-auto px-6 py-6">
             <div className="flex items-center justify-between">
-              <Link to="/" className="text-xl font-semibold hover:text-gray-300 transition-colors">
+              <Link href="/" className="text-xl font-semibold hover:text-gray-300 transition-colors">
                 ← Back to Portfolio
               </Link>
               <h1 className="text-2xl font-bold">Blog</h1>
@@ -167,7 +167,7 @@ export const BlogPage = () => {
                {blogPosts.map((post) => (
                   <article key={post.id} className="border border-white/10 rounded-lg p-6 hover:border-white/20 transition-colors">
                    <div className="flex items-start justify-between mb-4">
-                      <Link to={`/blog/${post.id}`} className="text-xl font-semibold hover:text-gray-300 transition-colors cursor-pointer">
+                      <Link href={`/blog/${post.id}`} className="text-xl font-semibold hover:text-gray-300 transition-colors cursor-pointer">
                         {post.title}
                       </Link>
                      <span className="text-sm text-gray-500">{post.readTime}</span>

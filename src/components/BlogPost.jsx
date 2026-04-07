@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link, useParams } from 'react-router-dom';
+import Link from 'next/link';
 import { getBlogPostById } from '../firebase/blogService.js';
 
-export const BlogPost = () => {
-  const { id } = useParams();
+export const BlogPost = ({ id }) => {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -153,7 +152,7 @@ export const BlogPost = () => {
     <div className="min-h-screen bg-[#0e141b] text-white font-inter">
       <header className="border-b border-white/10">
         <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
-          <Link to="/blog" className="text-xl font-semibold hover:text-gray-300 transition-colors">
+          <Link href="/blog" className="text-xl font-semibold hover:text-gray-300 transition-colors">
             ← Back to Blog
           </Link>
         </div>

@@ -5,6 +5,8 @@ import { BlogPage } from './components/BlogPage';
 import { BlogAdmin } from './components/BlogAdmin';
 import { BlogPost } from './components/BlogPost';
 import { CreateAdmin } from './components/CreateAdmin';
+import { PageGenerator } from './components/PageGenerator';
+import { PageViewer } from './components/PageViewer';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/blog/admin" element={<BlogAdmin />} />
         <Route path="/blog/admin/create" element={<CreateAdmin />} />
+        <Route path="/page-generator" element={<PageGenerator />} />
+        <Route path="/:slug" element={<PageViewer />} />
       </Routes>
     </Router>
   );

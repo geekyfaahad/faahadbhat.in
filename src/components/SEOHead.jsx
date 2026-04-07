@@ -5,8 +5,8 @@ export const SEOHead = () => {
   return (
     <Helmet>
       {/* Basic Meta Tags */}
-      <title>Faahad Bhat (Geeky Faahad) - Full Stack Developer</title>
-      <meta name="description" content="Full Stack Developer specializing in Python (Flask, Django) and JavaScript (React). Expert in secure authentication systems, RESTful APIs, and automation. Based in Kashmir, India." />
+      <title>Faahad Bhat — Full Stack Developer | React, Python, AI Systems</title>
+      <meta name="description" content="Portfolio of Faahad Bhat, full-stack developer specializing in SaaS platforms, AI integrations, and scalable web applications using React, Next.js, and Python." />
       <meta name="keywords" content="Full Stack Developer, Python Developer, React Developer, Flask, Django, JavaScript, Web Development, Kashmir, India, Geeky Faahad, Faahad Bhat" />
       <meta name="author" content="Faahad Bhat" />
       <meta name="robots" content="index, follow" />
@@ -52,8 +52,8 @@ export const SEOHead = () => {
       {/* Open Graph Meta Tags */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://geekyfaahad.netlify.app/" />
-      <meta property="og:title" content="Faahad Bhat (Geeky Faahad) - Full Stack Developer" />
-      <meta property="og:description" content="Full Stack Developer specializing in Python (Flask, Django) and JavaScript (React). Expert in secure authentication systems, RESTful APIs, and automation." />
+      <meta property="og:title" content="Faahad Bhat — Full Stack Developer | React, Python, AI Systems" />
+      <meta property="og:description" content="Portfolio of Faahad Bhat, full-stack developer specializing in SaaS platforms, AI integrations, and scalable web applications using React, Next.js, and Python." />
       <meta property="og:image" content="https://res.cloudinary.com/dw1sh368y/image/upload/v1749547175/faahad_atkeve.webp" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
@@ -63,8 +63,8 @@ export const SEOHead = () => {
       {/* Twitter Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content="https://faahadbhat.in" />
-      <meta name="twitter:title" content="Faahad Bhat (Geeky Faahad) - Full Stack Developer" />
-      <meta name="twitter:description" content="Full Stack Developer specializing in Python (Flask, Django) and JavaScript (React). Expert in secure authentication systems, RESTful APIs, and automation." />
+      <meta name="twitter:title" content="Faahad Bhat — Full Stack Developer | React, Python, AI Systems" />
+      <meta name="twitter:description" content="Portfolio of Faahad Bhat, full-stack developer specializing in SaaS platforms, AI integrations, and scalable web applications using React, Next.js, and Python." />
       <meta name="twitter:image" content="https://res.cloudinary.com/dw1sh368y/image/upload/v1749547175/faahad_atkeve.webp" />
       <meta name="twitter:creator" content="@faahadbhat" />
       <meta name="twitter:site" content="@faahadbhat" />
@@ -85,7 +85,7 @@ export const SEOHead = () => {
           "name": "Faahad Bhat",
           "alternateName": "Geeky Faahad",
           "jobTitle": "Full Stack Developer",
-          "description": "A highly skilled Full-Stack Developer experienced in building performant web applications with Python (Flask, Django) and JavaScript (React). Expert in secure authentication systems, RESTful APIs, and automation.",
+          "description": "Full-Stack Developer specializing in SaaS platforms, AI integrations, and scalable web applications with React, Next.js, and Python.",
           "url": "https://faahadbhat.in/",
           "image": "https://res.cloudinary.com/dw1sh368y/image/upload/v1749547175/faahad_atkeve.webp",
           "sameAs": [

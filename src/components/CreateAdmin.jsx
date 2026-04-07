@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { createAdminAccount } from '../firebase/authService.js';
 
 export const CreateAdmin = () => {
@@ -57,7 +57,7 @@ export const CreateAdmin = () => {
       <div className="min-h-screen bg-[#0e141b] text-white font-inter flex items-center justify-center p-5">
         <div className="max-w-md w-full">
           <div className="text-center mb-8">
-            <Link to="/" className="text-gray-400 hover:text-white transition-colors">
+            <Link href="/" className="text-gray-400 hover:text-white transition-colors">
               ← Back to Portfolio
             </Link>
             <h1 className="text-2xl font-bold mt-4">Create Admin Account</h1>
@@ -119,7 +119,7 @@ export const CreateAdmin = () => {
 
           <div className="mt-6 text-center">
             <Link 
-              to="/blog/admin" 
+              href="/blog/admin" 
               className="text-blue-400 hover:text-blue-300 transition-colors"
             >
               Already have an account? Sign in here

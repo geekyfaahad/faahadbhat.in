@@ -1,16 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { 
   getAllBlogPosts, 
-  addBlogPost, 
-  updateBlogPost, 
-  deleteBlogPost, 
-  togglePublishStatus
 } from '../firebase/blogService.js';
 import { migrateDataToFirebase } from '../firebase/migrateData.js';
 import { loginAdmin, logoutAdmin, onAuthStateChange, getCurrentUser } from '../firebase/authService.js';
-import RichTextEditor from './RichTextEditor.jsx';
+const RichTextEditor = dynamic(() => import('./RichTextEditor.jsx'), { ssr: false });
+
+const createPostServer = async (postData) => {
+  const res = await fetch('/api/blog', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(postData)
+  });
+  if (!res.ok) throw new Error('Failed to create post');
+  return res.json();
+};
+
+const updatePostServer = async (postId, postData) => {
+  const res = await fetch(`/api/blog/${postId}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(postData)
+  });
+  if (!res.ok) throw new Error('Failed to update post');
+  return res.json();
+};
+
+const deletePostServer = async (postId) => {
+  const res = await fetch(`/api/blog/${postId}`, { method: 'DELETE' });
+  if (!res.ok) throw new Error('Failed to delete post');
+  return res.json();
+};
+
+const togglePublishServer = async (postId, published) => {
+  const res = await fetch(`/api/blog/${postId}/publish`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ published })
+  });
+  if (!res.ok) throw new Error('Failed to toggle publish state');
+  return res.json();
+};
 
 export const BlogAdmin = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -167,10 +200,10 @@ export const BlogAdmin = () => {
       let savePromise;
       if (editingPost) {
         // Update existing post
-        savePromise = updateBlogPost(editingPost.id, postData);
+        savePromise = updatePostServer(editingPost.id, postData);
       } else {
         // Add new post
-        savePromise = addBlogPost(postData);
+        savePromise = createPostServer(postData);
       }
 
       // Race between save operation and timeout
@@ -238,7 +271,7 @@ export const BlogAdmin = () => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
         setLoading(true);
-        await deleteBlogPost(postId);
+        await deletePostServer(postId);
         await loadPosts();
         setNotificationMessage('✅ Post deleted successfully!');
         setShowNotification(true);
@@ -259,7 +292,7 @@ export const BlogAdmin = () => {
       setLoading(true);
       const post = posts.find(p => p.id === postId);
       const newPublishedStatus = !post.published;
-      await togglePublishStatus(postId, newPublishedStatus);
+      await togglePublishServer(postId, newPublishedStatus);
       await loadPosts();
       setNotificationMessage(`✅ Post ${newPublishedStatus ? 'published' : 'unpublished'} successfully!`);
       setShowNotification(true);
@@ -328,7 +361,7 @@ export const BlogAdmin = () => {
         <div className="min-h-screen bg-[#0e141b] text-white font-inter flex items-center justify-center p-5">
           <div className="max-w-md w-full">
             <div className="text-center mb-8">
-              <Link to="/" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                 ← Back to Portfolio
               </Link>
               <h1 className="text-2xl font-bold mt-4">Blog Admin</h1>
@@ -369,7 +402,7 @@ export const BlogAdmin = () => {
 
             <div className="mt-6 text-center">
               <Link 
-                to="/blog/admin/create" 
+                href="/blog/admin/create" 
                 className="text-blue-400 hover:text-blue-300 transition-colors"
               >
                 Need to create an admin account?
@@ -407,7 +440,7 @@ export const BlogAdmin = () => {
           <div className="max-w-6xl mx-auto px-6 py-6">
             <div className="flex items-center justify-between">
                              <div className="flex items-center gap-6">
-                 <Link to="/" className="text-xl font-semibold hover:text-gray-300 transition-colors">
+                <Link href="/" className="text-xl font-semibold hover:text-gray-300 transition-colors">
                    ← Back to Portfolio
                  </Link>
                  <div>
