@@ -342,7 +342,7 @@ export const BlogAdmin = () => {
         <Helmet>
           <title>Blog Admin - Faahad Bhat</title>
         </Helmet>
-        <div className="min-h-screen bg-[#0e141b] text-white font-inter flex items-center justify-center p-5">
+        <div className="min-h-screen bg-[#0e141b] text-white flex items-center justify-center p-5">
           <div className="text-center">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-white mb-4"></div>
             <p className="text-gray-400">Checking authentication...</p>
@@ -358,7 +358,7 @@ export const BlogAdmin = () => {
         <Helmet>
           <title>Blog Admin - Faahad Bhat</title>
         </Helmet>
-        <div className="min-h-screen bg-[#0e141b] text-white font-inter flex items-center justify-center p-5">
+        <div className="min-h-screen bg-[#0e141b] text-white flex items-center justify-center p-5">
           <div className="max-w-md w-full">
             <div className="text-center mb-8">
               <Link href="/" className="text-gray-400 hover:text-white transition-colors">
@@ -419,7 +419,7 @@ export const BlogAdmin = () => {
       <Helmet>
         <title>Blog Admin - Faahad Bhat</title>
       </Helmet>
-             <div className="min-h-screen bg-[#0e141b] text-white font-inter">
+             <div className="min-h-screen bg-[#0e141b] text-white">
          {/* Notification */}
          {showNotification && (
            <div className="fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 max-w-md">

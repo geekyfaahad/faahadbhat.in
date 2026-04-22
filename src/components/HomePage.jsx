@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import { SEOHead } from './SEOHead';
 import { LinkedInIcon } from './icons/LinkedInIcon';
 import { GitHubIcon } from './icons/GitHubIcon';
@@ -59,10 +61,41 @@ const TECH_STACK_ROWS = [
   },
 ];
 
+const NAME_ROTATION_MS = 2500;
+
+/** Same person; script / locale rotates for the hero heading. */
+const NAME_VARIANTS = [
+  { text: 'Faahad Bhat', lang: 'en', dir: 'ltr' },
+  { text: 'فاہد بھٹ', lang: 'ur', dir: 'rtl' },
+  { text: 'فٲہٲدٕ بٲٹٕ', lang: 'ks', dir: 'rtl' },
+  { text: 'फ़ाहाद भट', lang: 'hi', dir: 'ltr' },
+  { text: 'Faahad Bhat', lang: 'id', dir: 'ltr' },
+];
+
+const RotatingNameHeading = () => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(
+      () => setIndex((i) => (i + 1) % NAME_VARIANTS.length),
+      NAME_ROTATION_MS
+    );
+    return () => clearInterval(id);
+  }, []);
+
+  const { text, lang, dir } = NAME_VARIANTS[index];
+
+  return (
+    <h1 className="text-xl font-semibold min-h-[1.75rem] flex items-center justify-center" lang={lang} dir={dir}>
+      {text}
+    </h1>
+  );
+};
+
 const TechBadge = ({ label, src, title: titleAttr }) => (
   <span
     title={titleAttr ?? label}
-    className="inline-flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-gray-200 text-xs sm:text-sm"
+    className="inline-flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-full bg-white/10 border border-white/10 text-gray-200 text-xs sm:text-sm font-satoshi"
   >
     <img
       src={src}
@@ -81,7 +114,7 @@ export const HomePage = () => {
   return (
     <>
       <SEOHead />
-      <div className="min-h-screen bg-gradient-to-b from-[#0a1626] via-[#0e141b] to-[#0e141b] text-white font-inter flex items-center justify-center p-5">
+      <div className="min-h-screen bg-gradient-to-b from-[#0a1626] via-[#0e141b] to-[#0e141b] text-white flex items-center justify-center p-5">
         <div className="text-center max-w-4xl w-full">
           <img 
             src="https://res.cloudinary.com/dw1sh368y/image/upload/v1749547175/faahad_atkeve.webp" 
@@ -89,7 +122,7 @@ export const HomePage = () => {
             className="w-32 h-32 rounded-full object-cover mb-4 mx-auto grayscale-0 transition-all duration-300" 
           />
           
-          <h1 className="text-xl font-semibold">Faahad Bhat</h1>
+          <RotatingNameHeading />
           
           <p className="text-gray-400 text-sm mt-2 mb-4 flex items-center justify-center gap-1">
             <LocationIcon />
@@ -101,7 +134,7 @@ export const HomePage = () => {
             Experienced with React, Next.js, Python, and cloud infrastructure, building products used by real users.
           </p>
 
-          {/* Metrics */}
+          {/* Metrics
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
             <div className="bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur-sm hover:shadow-lg hover:shadow-blue-900/30 transition-all duration-300">
               <p className="text-xl font-semibold">15+</p>
@@ -115,10 +148,10 @@ export const HomePage = () => {
               <p className="text-xl font-semibold">100k+</p>
               <p className="text-xs text-gray-400">API requests processed</p>
             </div>
-          </div>
+          </div> */}
 
           {/* What I Build */}
-          <div className="mb-10 text-left bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+          {/* <div className="mb-10 text-left bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
             <h2 className="text-lg font-semibold mb-3 text-white text-center">What I Build</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
               <p>• SaaS platforms</p>
@@ -127,16 +160,16 @@ export const HomePage = () => {
               <p>• Developer tools</p>
               <p>• Automation systems</p>
             </div>
-          </div>
+          </div> */}
 
           {/* Tech Stack */}
-          <div className="mb-10 text-left bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <h2 className="text-lg font-semibold mb-4 text-white text-center">Tech Stack</h2>
+          <div className="mb-10 text-center bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <h2 className="text-lg font-semibold mb-4 text-white">Tech Stack</h2>
             <div className="space-y-5 text-sm">
               {TECH_STACK_ROWS.map((row) => (
                 <div key={row.title}>
-                  <p className="text-white font-medium mb-2">{row.title}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <p className="text-white font-medium mb-2 font-satoshi">{row.title}</p>
+                  <div className="flex flex-wrap gap-2 justify-center">
                     {row.items.map((item) => (
                       <TechBadge
                         key={item.label}
@@ -152,7 +185,7 @@ export const HomePage = () => {
           </div>
 
           {/* Engineering Focus */}
-          <div className="mb-10 text-left bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+          {/* <div className="mb-10 text-left bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
             <h2 className="text-lg font-semibold mb-3 text-white text-center">Engineering Focus</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
               <p>• Scalable API design</p>
@@ -161,13 +194,13 @@ export const HomePage = () => {
               <p>• AI integrations and RAG systems</p>
               <p>• Multi-tenant SaaS architecture</p>
             </div>
-          </div>
+          </div> */}
 
           {/* Projects Section */}
           <div className="mb-10">
             <h2 className="text-lg font-semibold mb-3 text-white">Featured Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg p-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-900/30 text-left h-full flex flex-col">
+              {/* <div className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg p-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-900/30 text-left h-full flex flex-col">
                 <h3 className="text-sm font-semibold text-white mb-1">Awaaz</h3>
                 <p className="text-xs text-gray-400 mb-2">Async News Aggregator</p>
                 <p className="text-xs text-gray-300 mb-2">Python • FastAPI • React • Redis</p>
@@ -175,6 +208,17 @@ export const HomePage = () => {
                 <div className="mt-auto flex gap-2">
                   <a href="https://awaaz-news.vercel.app" target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1 rounded-full bg-blue-600 hover:bg-blue-700 transition-colors">Live Demo</a>
                   <a href="https://github.com/geekyfaahad/awaaz" target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors">Source Code</a>
+                </div>
+              </div> */}
+
+              <div className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg p-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-900/30 text-left h-full flex flex-col">
+                <h3 className="text-sm font-semibold text-white mb-1">Bill Book</h3>
+                <p className="text-xs text-gray-400 mb-2">Invoice and cash memo system</p>
+                <p className="text-xs text-gray-300 mb-2">React • Vite • TypeScript • Tailwind • Zustand</p>
+                <p className="text-xs text-gray-400 mb-3">Invoices, dashboard, customers and line items, tax/discount, print-ready layouts, local persistence</p>
+                <div className="mt-auto flex flex-wrap gap-2">
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1 rounded-full bg-blue-600 hover:bg-blue-700 transition-colors">Live Demo</a>
+                  <a href="https://github.com/geekyfaahad/Bill-Book" target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors">Source Code</a>
                 </div>
               </div>
 
@@ -196,14 +240,14 @@ export const HomePage = () => {
                 <p className="text-xs text-gray-400 mb-3">Semantic search, embeddings, long-form AI summarization</p>
                 <div className="mt-auto flex gap-2">
                   <a href="https://awaaz-rag.vercel.app" target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1 rounded-full bg-blue-600 hover:bg-blue-700 transition-colors">Live Demo</a>
-                  <a href="https://github.com/geekyfaahad" target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors">Source Code</a>
+                  <a href="https://github.com/geekyfaahad/Awaaz-RAG" target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 transition-colors">Source Code</a>
                 </div>
               </div>
             </div>
           </div>
 
           {/* GitHub and Writing */}
-          <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+          {/* <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
             <a
               href="https://github.com/geekyfaahad"
               target="_blank"
@@ -230,17 +274,17 @@ export const HomePage = () => {
                 <li>• How RAG Systems Work in Production</li>
               </ul>
             </Link>
-          </div>
+          </div> */}
 
           {/* Currently Building */}
-          <div className="mb-10 text-left bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+          {/* <div className="mb-10 text-left bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
             <h2 className="text-lg font-semibold mb-3 text-white text-center">Currently Building</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
               <p>• AI-powered developer tools</p>
               <p>• Advanced RAG pipelines</p>
               <p>• Scalable SaaS platforms</p>
             </div>
-          </div>
+          </div> */}
 
           {/* Primary CTA */}
           <div className="flex flex-wrap justify-center gap-3 text-sm mb-10">
@@ -306,7 +350,7 @@ export const HomePage = () => {
               <a href="https://www.linkedin.com/in/geekyfaahad/" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:text-blue-200">LinkedIn</a>
             </div>
             <p className="text-xs text-gray-500 mt-4">
-              Outside of coding, I enjoy exploring AI systems, reading about distributed architectures, and building experimental developer tools.
+              Outside of coding, I enjoy exploring AI systems, reading and learning about software engineering fundamentals, and building experimental developer tools.
             </p>
           </div>
         </div>

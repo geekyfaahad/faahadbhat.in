@@ -149,7 +149,7 @@ export const BlogPost = ({ id }) => {
   }, [id]);
 
   return (
-    <div className="min-h-screen bg-[#0e141b] text-white font-inter">
+    <div className="min-h-screen bg-[#0e141b] text-white">
       <header className="border-b border-white/10">
         <div className="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
           <Link href="/blog" className="text-xl font-semibold hover:text-gray-300 transition-colors">

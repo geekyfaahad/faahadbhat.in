@@ -110,7 +110,7 @@ export const BlogPage = () => {
         </script>
       </Helmet>
       
-      <div className="min-h-screen bg-[#0e141b] text-white font-inter">
+      <div className="min-h-screen bg-[#0e141b] text-white">
         {/* Header */}
         <header className="border-b border-white/10">
           <div className="max-w-4xl mx-auto px-6 py-6">

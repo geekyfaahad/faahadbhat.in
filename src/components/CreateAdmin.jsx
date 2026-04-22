@@ -54,7 +54,7 @@ export const CreateAdmin = () => {
       <Helmet>
         <title>Create Admin Account - Faahad Bhat</title>
       </Helmet>
-      <div className="min-h-screen bg-[#0e141b] text-white font-inter flex items-center justify-center p-5">
+      <div className="min-h-screen bg-[#0e141b] text-white flex items-center justify-center p-5">
         <div className="max-w-md w-full">
           <div className="text-center mb-8">
             <Link href="/" className="text-gray-400 hover:text-white transition-colors">

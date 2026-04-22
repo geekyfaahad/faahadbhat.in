@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  /* Inter = body (default font-sans on body); Satoshi = display / UI chrome */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-satoshi;
+  }
+
+  button,
+  [type='button'],
+  [type='submit'],
+  [type='reset'] {
+    @apply font-satoshi;
+  }
+
+  /* Pill / chip links (CTAs, tags) */
+  a.rounded-full {
+    @apply font-satoshi;
+  }
+}
+
 @layer utilities {
   .grayscale {
     filter: grayscale(100%);

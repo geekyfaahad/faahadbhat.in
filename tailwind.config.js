@@ -4,8 +4,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        inter: ['Inter', 'sans-serif']
-      }
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        inter: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        satoshi: ['Satoshi', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [],
