@@ -124,12 +124,12 @@ export const HomePage = () => {
           
           <RotatingNameHeading />
           
-          <p className="text-gray-400 text-sm mt-2 mb-4 flex items-center justify-center gap-1">
+          <p className="text-gray-400 text-sm mt-2 mb-4 flex items-center justify-center gap-1 font-['Syne']">
             <LocationIcon />
             Kashmir
           </p>
           
-          <p className="text-gray-300 text-base mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-300 text-base mb-8 max-w-2xl mx-auto leading-relaxed font-['Syne']">
             Full-Stack Developer building scalable SaaS platforms, AI-powered systems, and high-performance APIs.
             Experienced with React, Next.js, Python, and cloud infrastructure, building products used by real users.
           </p>
